@@ -5,43 +5,40 @@ using System.Data.Entity;
 
 namespace InnoGotchi.DAL.Repositories
 {
-    internal class UserRepository : IRepository<User>
+    public class UserRepository : IRepository<User>
     {
         private InnoGotchiDbContext db;
 
-    public UserRepository(InnoGotchiDbContext context)
-    {
-        this.db = context;
-    }
+        public UserRepository(InnoGotchiDbContext context)
+        {
+            this.db = context;
+        }
 
-    public IEnumerable<User> GetAll()
-    {
-        return db.Users;
-    }
+        public List<User> GetAll()
+        {
+            return db.Users.ToList();
+        }
 
-    public User Get(int id)
-    {
-        return db.Users.Find(id);
-    }
+        public User Get(int id)
+        {
+            return db.Users.SingleOrDefault(user => user.Id == id);
+        }
 
-    public void Create(User order)
-    {
-        db.Users.Add(order);
-    }
+        public void Create(User user)
+        {
+            db.Users.Add(user);
+        }
 
-    public void Update(User order)
-    {
-        db.Entry(order).State = (Microsoft.EntityFrameworkCore.EntityState)EntityState.Modified;
+        public void Update(User user)
+        {
+            db.Entry(user).State = (Microsoft.EntityFrameworkCore.EntityState)EntityState.Modified;
+        }
+
+        public void Delete(int id)
+        {
+            User user = db.Users.Find(id);
+            if (user != null)
+                db.Users.Remove(user);
+        }
     }
-    public IEnumerable<User> Find(Func<User, Boolean> predicate)
-    {
-        return db.Users.Where(predicate).ToList();
-    }
-    public void Delete(int id)
-    {
-        User order = db.Users.Find(id);
-        if (order != null)
-            db.Users.Remove(order);
-    }
-}
 }

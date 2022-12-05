@@ -1,15 +1,14 @@
-﻿using InnoGotchi.DAL.Entities;
+﻿using InnoGotchi.BLL.DTO;
+using InnoGotchi.WEB.Models;
 
-namespace InnoGotchi.BLL.DTO
+namespace NLayerApp.WEB.Models
 {
-    public class UserDTO
+    public class UserViewModel
     {
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Email { get; set; }
         public string AvatarImg { get; set; }
-        public string Passvord { get; set; }
-        public virtual List<FarmDTO> Farms { get; set; }
-
+        public virtual List<FarmViewModel> Farms { get; set; }
     }
 }

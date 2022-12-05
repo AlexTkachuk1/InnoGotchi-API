@@ -1,25 +1,13 @@
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using InnoGotchi.BLL.Interfaces;
-using InnoGotchi.BLL.Services;
-using InnoGotchi.DAL.EF;
-using InnoGotchi.DAL.Interfaces;
-using InnoGotchi.DAL.Repositories;
+
+using InnoGotchi.BLL;
+using InnoGotchi.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<InnoGotchiDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDALInfrastructure(builder.Configuration);
 
-builder.Services.AddScoped<IUnitOfWork>(container =>
-new EFUnitOfWork(container.GetService<InnoGotchiDbContext>())
-);
-
-builder.Services.AddScoped<IUserService>(container =>
-new UserService(container.GetService<IUnitOfWork>())
-);
+builder.Services.AddBLLInfrastructure();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

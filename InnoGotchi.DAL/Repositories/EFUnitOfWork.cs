@@ -1,11 +1,6 @@
 ﻿using InnoGotchi.DAL.EF;
 using InnoGotchi.DAL.Entities;
 using InnoGotchi.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InnoGotchi.DAL.Repositories
 {
@@ -13,9 +8,13 @@ namespace InnoGotchi.DAL.Repositories
     {
         private InnoGotchiDbContext db;
         private UserRepository userRepository;
-        public EFUnitOfWork(InnoGotchiDbContext mazeDbContext)
+        private FarmRepository farmRepository;
+        private PetRepository petRepository;
+        private BodyRepository bodyRepository;
+
+        public EFUnitOfWork(InnoGotchiDbContext innoGotchiDbContext)
         {
-            db = mazeDbContext;
+            db = innoGotchiDbContext;
         }
 
         public IRepository<User> Users
@@ -25,6 +24,34 @@ namespace InnoGotchi.DAL.Repositories
                 if (userRepository == null)
                     userRepository = new UserRepository(db);
                 return userRepository;
+            }
+        }
+
+        public IRepository<Farm> Farms
+        {
+            get
+            {
+                if (farmRepository == null)
+                    farmRepository = new FarmRepository(db);
+                return farmRepository;
+            }
+        }
+        public IRepository<Pet> Pets
+        {
+            get
+            {
+                if (petRepository == null)
+                    petRepository = new PetRepository(db);
+                return petRepository;
+            }
+        }
+        public IRepository<Body> Bodys
+        {
+            get
+            {
+                if (bodyRepository == null)
+                    bodyRepository = new BodyRepository(db);
+                return bodyRepository;
             }
         }
 
