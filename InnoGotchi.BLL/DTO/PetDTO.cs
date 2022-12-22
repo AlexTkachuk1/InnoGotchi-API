@@ -1,11 +1,11 @@
 ﻿namespace InnoGotchi.BLL.DTO
 {
-    public class PetDTO
+    public record PetDTO
     {
-        public string Name { get; set; }
-        public bool Hungry { get; set; }
-        public bool WantsToDrink { get; set; }
-        public virtual BodyDTO Body { get; set; }
-        public virtual FarmDTO Farm { get; set; }
+        public string Name { get; init; }
+        public bool Hungry { get; init; }
+        public bool Dehydrated { get; init; }
+        public virtual BodyDTO Body { get; init; }
+        public virtual FarmDTO Farm { get; init; }
     }
 }

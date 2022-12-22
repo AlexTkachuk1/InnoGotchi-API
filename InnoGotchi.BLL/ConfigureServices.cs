@@ -1,6 +1,5 @@
 ﻿using InnoGotchi.BLL.Interfaces;
-using InnoGotchi.BLL.Services;
-using InnoGotchi.DAL.Interfaces;
+using InnoGotchi.BLL.Services.Base;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace InnoGotchi.BLL
@@ -9,9 +8,7 @@ namespace InnoGotchi.BLL
     {
         public static IServiceCollection AddBLLInfrastructure(this IServiceCollection services)
         {
-            services.AddScoped<IUserService>(container =>
-            new UserService(container.GetService<IUnitOfWork>())
-            );
+            services.AddScoped(typeof(IService<,>), typeof(Service<,>));
 
             return services;
         }

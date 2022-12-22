@@ -1,12 +1,13 @@
-﻿namespace InnoGotchi.DAL.Entities
+﻿using InnoGotchi.DAL.Entities.Base;
+
+namespace InnoGotchi.DAL.Entities
 {
-    public class Pet
+    public class Pet : BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public bool Hungry { get; set; }
-        public bool WantsToDrink { get; set; }
-        public virtual Body Body { get; set; }
-        public virtual Farm Farm { get; set; }
+        public bool Dehydrated { get; set; }
+        public Body Body { get; set; }
+        public Farm Farm { get; set; }
     }
 }

@@ -1,11 +1,13 @@
-﻿namespace InnoGotchi.DAL.Interfaces
+﻿using InnoGotchi.DAL.Entities.Base;
+
+namespace InnoGotchi.DAL.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : BaseEntity
     {
-        List<T> GetAll();
+        IEnumerable<T> GetAll();
         T Get(int id);
-        void Create(T item);
-        void Update(T item);
-        void Delete(int id);
+        void Insert(T entity);
+        void Update(T entity);
+        void Delete(T entity);
     }
 }

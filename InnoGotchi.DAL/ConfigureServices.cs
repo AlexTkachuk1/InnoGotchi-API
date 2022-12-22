@@ -1,6 +1,6 @@
 ﻿using InnoGotchi.DAL.EF;
 using InnoGotchi.DAL.Interfaces;
-using InnoGotchi.DAL.Repositories;
+using InnoGotchi.DAL.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,9 +15,7 @@ namespace InnoGotchi.DAL
             services.AddDbContext<InnoGotchiDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
-            services.AddScoped<IUnitOfWork>(container =>
-            new EFUnitOfWork(container.GetService<InnoGotchiDbContext>())
-            );
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             return services;
         }

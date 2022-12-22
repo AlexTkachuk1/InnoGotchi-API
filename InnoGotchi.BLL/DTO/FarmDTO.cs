@@ -1,8 +1,10 @@
 ﻿namespace InnoGotchi.BLL.DTO
 {
-    public class FarmDTO
+    public record FarmDTO
     {
-        public virtual List<UserDTO> Users { get; set; }
-        public virtual List<PetDTO> Pets { get; set; }
+        public string Name { get; init; }
+        public UserDTO Creator { get; init; }
+        public List<UserDTO> Visitors { get; init; }
+        public List<PetDTO> Pets { get; init; }
     }
 }

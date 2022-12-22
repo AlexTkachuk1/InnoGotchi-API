@@ -1,13 +1,14 @@
-﻿namespace InnoGotchi.DAL.Entities
+﻿using InnoGotchi.DAL.Entities.Base;
+
+namespace InnoGotchi.DAL.Entities
 {
-    public class User
+    public class User : BaseEntity
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
-        public string SecondName { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
         public string AvatarImg { get; set; }
-        public string Passvord { get; set; }
-        public virtual List<Farm> Farms { get; set; }
+        public string Password { get; set; }
+        public List<Farm> Farms { get; set; }
     }
 }

@@ -1,10 +1,15 @@
-﻿namespace InnoGotchi.DAL.Entities
+﻿using InnoGotchi.DAL.Entities.Base;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace InnoGotchi.DAL.Entities
 {
-    public class Farm
+    public class Farm : BaseEntity
     {
-        public int Id { get; set; }
-        public int OwnerId { get; set; }
-        public virtual List<User> Users { get; set; }
-        public virtual List<Pet> Pets { get; set; }
+        public string Name { get; set; }
+
+        [NotMapped]
+        public User Creator { get; set; }
+        public List<User> Visitors { get; set; }
+        public List<Pet> Pets { get; set; }
     }
 }

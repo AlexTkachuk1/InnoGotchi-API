@@ -1,15 +1,12 @@
-﻿using InnoGotchi.DAL.Entities;
-
-namespace InnoGotchi.BLL.DTO
+﻿namespace InnoGotchi.BLL.DTO
 {
-    public class UserDTO
+    public record UserDTO
     {
-        public string FirstName { get; set; }
-        public string SecondName { get; set; }
-        public string Email { get; set; }
-        public string AvatarImg { get; set; }
-        public string Passvord { get; set; }
-        public virtual List<FarmDTO> Farms { get; set; }
-
+        public string FirstName { get; init; }
+        public string LastName { get; init; }
+        public string Email { get; init; }
+        public string AvatarImg { get; init; }
+        public string Password { get; init; }
+        public List<FarmDTO> Farms { get; init; }
     }
 }

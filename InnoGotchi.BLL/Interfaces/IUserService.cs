@@ -5,11 +5,10 @@ namespace InnoGotchi.BLL.Interfaces
 {
     public interface IUserService
     {
-        void CreateUser(User user);
-        void UpdateUser(User user);
-        void DeleteUser(int userId);
-        User GetUser(int userId);
-        List<User> GetAllUsers();
-        void Dispose();
+        void Create(UserDTO userDTO);
+        void Update(UserDTO userDTO);
+        void Delete(int userId);
+        User Get(int userId);
+        IEnumerable<User> GetAll();
     }
 }

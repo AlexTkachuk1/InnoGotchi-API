@@ -1,11 +1,11 @@
 ﻿namespace InnoGotchi.BLL.DTO
 {
-    public class BodyDTO
+    public record BodyDTO
     {
-        public string Eyes { get; set; }
-        public string Nose { get; set; }
-        public string Mouth { get; set; }
-        public string BodyShape { get; set; }
-        public virtual PetDTO Owner { get; set; }
+        public string Eyes { get; init; }
+        public string Nose { get; init; }
+        public string Mouth { get; init; }
+        public string BodyShape { get; init; }
+        public PetDTO Owner { get; init; }
     }
 }
